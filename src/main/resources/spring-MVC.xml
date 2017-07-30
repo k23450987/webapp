@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xmlns:context="http://www.springframework.org/schema/context"
-		xmlns:mvc="http://www.springframework.org/schema/mvc"
-		xmlns:p="http://www.springframework.org/schema/p"
-		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<!-- 扫描 controller 层 -->
-	<context:component-scan base-package="com.tom.webapp.controller" />
+    <!-- 扫描 controller 层 -->
+    <context:component-scan base-package="com.tom.webapp.controller"/>
 
-	<!-- 默认的注解映射的支持，自动注册DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter -->
-	<mvc:annotation-driven>
-		<mvc:message-converters>
-			<!-- spring 4.2 以上使用 FastJsonHttpMessageConverter4 -->
-			<bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4">
-				<!-- MediaTypes -->
-				<property name="supportedMediaTypes">
-					<list>
-						<value>application/json</value>
-					</list>
-				</property>
-				<!-- FastJsonConfig -->
-				<property name="fastJsonConfig" ref="fastJsonConfig" />
-			</bean>
-		</mvc:message-converters>
-	</mvc:annotation-driven>
+    <!-- 默认的注解映射的支持，自动注册DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter -->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <!-- spring 4.2 以上使用 FastJsonHttpMessageConverter4 -->
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4">
+                <!-- MediaTypes -->
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json</value>
+                    </list>
+                </property>
+                <!-- FastJsonConfig -->
+                <property name="fastJsonConfig" ref="fastJsonConfig"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
-	<mvc:default-servlet-handler />
+    <mvc:default-servlet-handler/>
 
 
-	<!-- 视图解释类 -->
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/jsp/"/>
-		<property name="suffix" value=".jsp"/>
-		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-	</bean>
+    <!-- 视图解释类 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+    </bean>
 
-	<bean id="fastJsonConfig" class="com.alibaba.fastjson.support.config.FastJsonConfig">
-		<!-- Default charset -->
-		<property name="charset" value="UTF-8" />
-		<!-- Default dateFormat -->
-		<property name="dateFormat" value="yyyy-MM-dd HH:mm:ss" />
-		<!-- Feature -->
-	</bean>
+    <bean id="fastJsonConfig" class="com.alibaba.fastjson.support.config.FastJsonConfig">
+        <!-- Default charset -->
+        <property name="charset" value="UTF-8"/>
+        <!-- Default dateFormat -->
+        <property name="dateFormat" value="yyyy-MM-dd HH:mm:ss"/>
+        <!-- Feature -->
+    </bean>
 
-	<!-- servlet适配器，这里必须明确声明，因为spring默认没有初始化该适配器 -->
-	<bean id="servletHandlerAdapter"
-			class="org.springframework.web.servlet.handler.SimpleServletHandlerAdapter" />
+    <!-- servlet适配器，这里必须明确声明，因为spring默认没有初始化该适配器 -->
+    <bean id="servletHandlerAdapter"
+            class="org.springframework.web.servlet.handler.SimpleServletHandlerAdapter"/>
 
-	<!-- 定义文件上传处理器 -->
-	<bean id="multipartResolver"
-			class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
-			p:defaultEncoding="UTF-8" />
+    <!-- 定义文件上传处理器 -->
+    <bean id="multipartResolver"
+            class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+            p:defaultEncoding="UTF-8"/>
 
-	<!-- 对静态资源文件的访问-->
-	<mvc:resources mapping="/images/**" location="/WEB-INF/images/" cache-period="31556926"/>
-	<mvc:resources mapping="/js/**" location="/WEB-INF/js/" cache-period="31556926"/>
-	<mvc:resources mapping="/css/**" location="/WEB-INF/css/" cache-period="31556926"/>
+    <!-- 对静态资源文件的访问-->
+    <mvc:resources mapping="/images/**" location="/WEB-INF/images/" cache-period="31556926"/>
+    <mvc:resources mapping="/js/**" location="/WEB-INF/js/" cache-period="31556926"/>
+    <mvc:resources mapping="/css/**" location="/WEB-INF/css/" cache-period="31556926"/>
 
 </beans>

@@ -17,20 +17,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class PersonManagerController {
 
-	@Autowired
-	private PersonService personService;
+    @Autowired
+    private PersonService personService;
 
-	@RequestMapping("/personList")
-	@ResponseBody
-	public PageInfo<Person> getPersonList(){
-		// for (int i = 0; i < 10 ; i++) {
-		// 	Person person = new Person("王"+ i ,"male", 18 + i ,"13245678911","usa");
-		// 	personService.insert(person);
-		// }
-		// mybatis 分頁插件
-		PageHelper.startPage(1,10);
-		List<Person> personList = personService.selectAll();
-		// 使用 PageInfo 封装
-		return new PageInfo<>(personList);
-	}
+    @RequestMapping("/personList")
+    @ResponseBody
+    public PageInfo<Person> getPersonList() {
+        // for (int i = 0; i < 10 ; i++) {
+        // 	Person person = new Person("王"+ i ,"male", 18 + i ,"13245678911","usa");
+        // 	personService.insert(person);
+        // }
+        // mybatis 分頁插件
+        PageHelper.startPage(1, 10);
+        List<Person> personList = personService.selectAll();
+        // 使用 PageInfo 封装
+        return new PageInfo<>(personList);
+    }
 }
