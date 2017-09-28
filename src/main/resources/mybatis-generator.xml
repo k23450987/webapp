@@ -27,7 +27,7 @@
         </javaModelGenerator>
 
         <!-- !!!! Mapper XML Configurations !!!! -->
-        <sqlMapGenerator targetPackage="com.tom.webapp.persist.mapper" targetProject="THIS_CONFIGURATION_IS_NOT_REQUIRED">
+        <sqlMapGenerator targetPackage="mapper.persist.dao" targetProject="THIS_CONFIGURATION_IS_NOT_REQUIRED">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
@@ -37,7 +37,13 @@
         </javaClientGenerator>
 
         <!-- !!!! Table Configurations !!!! -->
-        <table tableName="tbl_person" enableCountByExample="false" enableDeleteByExample="false"
+        <!--<table tableName="tbl_person" enableCountByExample="false" enableDeleteByExample="false"-->
+                <!--enableSelectByExample="false"-->
+                <!--enableUpdateByExample="false"/>-->
+        <table tableName="tbl_dept" domainObjectName="Dept" enableCountByExample="false" enableDeleteByExample="false"
+                enableSelectByExample="false"
+                enableUpdateByExample="false"/>
+        <table tableName="tbl_company" domainObjectName="Company" enableCountByExample="false" enableDeleteByExample="false"
                 enableSelectByExample="false"
                 enableUpdateByExample="false"/>
 
